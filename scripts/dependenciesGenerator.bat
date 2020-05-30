@@ -1,0 +1,3 @@
+pip freeze > %cd%/../requirements.txt
+Echo Press any key to continue...
+PAUSE

@@ -10,8 +10,9 @@ from app.forms import LoginForm
 import datetime
 
 #Run the home() function when someone accesses the root URL ('/') of the server
-@app.route('/')
-@app.route('/index')
+@app.route("/")
+@app.route("/home")
+@app.route("/index")
 def index():
  	now = datetime.datetime.now()
  	timeString = now.strftime("%Y-%m-%d %H:%M")

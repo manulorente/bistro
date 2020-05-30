@@ -1,0 +1,5 @@
+*.vs
+vs/*
+venv/*
+__pycache__
+__pycache__/*
