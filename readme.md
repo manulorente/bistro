@@ -7,9 +7,7 @@ This repository consists in a set of folders with specific purpose described bel
 | *readme*  		| This file       |
 | *changelog*  		| Changes tracking file       |
 | *doc*  			| Stuff documentation       |
-| *tags*  			| Releases tagged versions |
-| *trunk*  			| Main development source files       |
-| *branches*  		| Copy of trunk source files to implement in parallel extra functionalities      |
+| *bin*  			| Development source files       |
 
 ## Getting started
 0.	Clone/download GitHub repository on your project desired location
