@@ -1,20 +1,25 @@
-#Import libraries
-from flask import Flask, render_template
-import datetime
+# -*- coding: utf-8 -*-
+"""
+Created on Fri May 29 21:24:55 2020
 
-#Create Flask object
-app = Flask(__name__)
+@author: Manuel
+"""
+from app import app
+from flask import render_template, flash, redirect
+from app.forms import LoginForm
+import datetime
 
 #Run the home() function when someone accesses the root URL ('/') of the server
 @app.route('/')
-def home():
-	now = datetime.datetime.now()
-	timeString = now.strftime("%Y-%m-%d %H:%M")
-	templateData = {
+@app.route('/index')
+def index():
+ 	now = datetime.datetime.now()
+ 	timeString = now.strftime("%Y-%m-%d %H:%M")
+ 	templateData = {
       'message' : 'This is the landing page',
       'time': timeString
       }
-	return render_template('index.html', **templateData)
+ 	return render_template('index.html', **templateData)
 
 # Creating a new static page
 @app.route('/example')
@@ -37,7 +42,12 @@ def dynamic_page(message):
       'time': timeString
       }
 	return render_template('index.html', **templateData)
-	
-if __name__ == '__main__':
-	# Starts listen on port 80
-    app.run(debug=True, port=80, host='0.0.0.0')
+
+@app.route('/login')
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        flash('Login requested for user {}, remember_me={}'.format(
+            form.username.data, form.remember_me.data))
+        return redirect('/index')
+    return render_template('login.html', title='Sign In', form=form)
