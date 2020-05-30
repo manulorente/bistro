@@ -2,13 +2,15 @@
 ================================================
 ## Taxonomy
 This repository consists in a set of folders with specific purpose described below:
-	*readme.md:* 		This file\
-	*changelog.md:* 	Changes tracking file\
-	*doc:*				Stuff documentation\
-	*tags:*				Releases tagged version - Safe copy of a beta version of the app\
-	*trunk:*			Main development source files\
-	*branches:*			Copy of trunk source files to implement in parallel extra functionalities\
-	
+| File      	| Description |
+| ----------- 	| ----------- |
+| *readme.md:*  | This file       |
+| *changelog.md:*  | Changes tracking file       |
+| *doc:*  | Stuff documentation       |
+| *tags:*  | Releases tagged versions |
+| *trunk:*  | Main development source files       |
+| *branches:*  | Copy of trunk source files to implement in parallel extra functionalities      |
+
 ## Getting started
 0.	Clone/download GitHub repository on your project desired location
 
