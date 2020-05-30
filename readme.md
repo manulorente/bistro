@@ -23,9 +23,9 @@ This repository consists in a set of folders with specific purpose described bel
 2. 	Check Python installation typing in a new command line:  
 	``python -m pip install --upgrade pip``
 	
-3.	Install **Flask** and all project dependencies  
-	``python install Flask``  
-	``python install flask_wtf``
+3.	Install **Flask** and all project dependencies from command line: 
+	``pip install Flask``  
+	``pip install flask_wtf``
 	
 4.	Change directory to your **devBranch** in **branches** folder:  
 	``cd [YOUR_PROJECT_PATH]\branches\devBranch``
