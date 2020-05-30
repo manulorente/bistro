@@ -23,7 +23,7 @@ This repository consists in a set of folders with specific purpose described bel
 2. 	Check Python installation typing in a new command line:  
 	``python -m pip install --upgrade pip``
 	
-3.	Install **Flask** and all project dependencies from command line: 
+3.	Install **Flask** and all project dependencies from command line:   
 	``pip install Flask``  
 	``pip install flask_wtf``
 	
