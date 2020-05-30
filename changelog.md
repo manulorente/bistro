@@ -1,5 +1,6 @@
 Changelog
 ==============
+| ----------- 	| ----------- |
 | *Info*  		| This is the changelog for the project|
 | *Author*  	| Manuel Lorente <manloralm@outlook.com> |
 | *Copyright*  	| © 2020, Manuel Lorente.       |
