@@ -1,4 +1,4 @@
-**Instructions to run/debug app branch**
+**Project description**
 ================================================
 ## Taxonomy
 This repository consists in a set of folders with specific purpose described below:
@@ -12,7 +12,7 @@ This repository consists in a set of folders with specific purpose described bel
 | *app*  			| Source files |
 
 ## Getting started
-0.	Clone/download GitHub repository **branch** on your project desired location
+0.	Clone/download proyect **branch** on your desired location
 
 1. 	Download latest **Python3.X** version from official page:   
 	*Select Add Python to Windows Path checkbox during installation*  
@@ -36,5 +36,5 @@ This repository consists in a set of folders with specific purpose described bel
 
 7.	From now on you are able to change the code and user any browser as web viewer.
 
-#### Do not forget to commit and push changes once your development is finished
+#### Do not forget to commit and push changes and do pull request when your development is finished
 	
