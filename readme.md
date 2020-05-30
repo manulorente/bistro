@@ -20,23 +20,23 @@ This repository consists in a set of folders with specific purpose described bel
 	*Add Python to Windows Path just in case not added by default*  
 		https://datatofish.com/add-python-to-windows-path/  
 		
-2. 	Check Python installation typing in a new command line:\
+2. 	Check Python installation typing in a new command line:  
 	``python -m pip install --upgrade pip``
 	
-3.	Install **Flask** and all project dependencies\
-	``python install Flask``\
+3.	Install **Flask** and all project dependencies  
+	``python install Flask``  
 	``python install flask_wtf``
 	
-4.	Change directory to your **devBranch** in **branches** folder\
+4.	Change directory to your **devBranch** in **branches** folder:  
 	``cd [YOUR_PROJECT_PATH]\branches\devBranch``
 	
-5.	Override FLASK variable to easily deploy server:\
+5.	Override FLASK variable to easily deploy server:  
 	``set FLASK_APP=webServer.py``
 	
-6.	Run server just typing in command line:\
+6.	Run server just typing in command line:  
 	``flask run``
 	
-7.	Open web browser to contact the server which address is *http://127.0.0.1:5000/* 
+7.	Open web browser to contact server which address is *http://127.0.0.1:5000/* 
 
 8.	From now on you are able to change the code and user any browser as web viewer.
 
