@@ -2,23 +2,23 @@
 ================================================
 ## Taxonomy
 This repository consists in a set of folders with specific purpose described below:
-| File      	| Description |
-| ----------- 	| ----------- |
-| *readme.md:*  | This file       |
-| *changelog.md:*  | Changes tracking file       |
-| *doc:*  | Stuff documentation       |
-| *tags:*  | Releases tagged versions |
-| *trunk:*  | Main development source files       |
-| *branches:*  | Copy of trunk source files to implement in parallel extra functionalities      |
+| File      		| Description |
+| ----------- 		| ----------- |
+| *readme*  		| This file       |
+| *changelog*  		| Changes tracking file       |
+| *doc*  			| Stuff documentation       |
+| *tags*  			| Releases tagged versions |
+| *trunk*  			| Main development source files       |
+| *branches*  		| Copy of trunk source files to implement in parallel extra functionalities      |
 
 ## Getting started
 0.	Clone/download GitHub repository on your project desired location
 
-1. 	Download latest **Python3.X** version from official page \ 
-	*Select Add Python to Windows Path checkbox during installation* \
-		https://www.python.org/downloads/ \ 
-	*Add Python to Windows Path just in case not added by default* \
-		https://datatofish.com/add-python-to-windows-path/ \
+1. 	Download latest **Python3.X** version from official page:   
+	*Select Add Python to Windows Path checkbox during installation*  
+		https://www.python.org/downloads/   
+	*Add Python to Windows Path just in case not added by default*  
+		https://datatofish.com/add-python-to-windows-path/  
 		
 2. 	Check Python installation typing in a new command line:\
 	``python -m pip install --upgrade pip``
