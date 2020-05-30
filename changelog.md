@@ -2,7 +2,7 @@ Changelog
 ==============
 | Item     		| Description |
 | ----------- 	| ----------- |
-| *Info*  		| This is the changelog for the project|
+| *Info*  		| Work in progress|
 | *Author*  	| Manuel Lorente <manloralm@outlook.com> |
 | *Copyright*  	| © 2020, Manuel Lorente.       |
 | *Date*  		| 2020-05-30 |
@@ -11,4 +11,4 @@ Changelog
 Version History
 ===============
 0.0  
-    *Initial version*
+		*Initial version*
