@@ -1,5 +1,6 @@
 Changelog
 ==============
+| Item     		| Description |
 | ----------- 	| ----------- |
 | *Info*  		| This is the changelog for the project|
 | *Author*  	| Manuel Lorente <manloralm@outlook.com> |
