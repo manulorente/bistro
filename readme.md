@@ -1,24 +1,34 @@
+![](https://github.com/manulorente/bistro/blob/master/resources/logo.jpeg?raw=true)
+
 **Project description**
 ================================================
+This web application is build in Angular + Node.js.  
+This front-end will make requests against Golang backend which is powered by NoSQL.
+
+## Requirements
+* Couchbase Server 4.5+  
+* Golang 1.7+  
+* Node.js 6.0+  
+	
 ## Taxonomy
-This repository consists in a set of folders with specific purpose described below:
 | File      		| Description |
 | ----------- 		| ----------- |
 | *readme*  		| This file |
 | *changelog*  		| Changes tracking file |
-| *requirements*	| App dependencies to be installed |
-| *doc*  			| Stuff documentation |
-| *scripts*  		| Useful scripts |
-| *app*  			| Source files |
+| *resources*  		| Documentation and scripts to build the project |
+| *fonts*  			| All the fonts in the EOT, SVG, TTF, WOFF, etc, formats |
+| *scripts*  		| All the AngularJS code |
+| *server*  		| All the Go code |
+| *styles*  		| All styles code |
+| *views*  			| All the HTML code |
+
 
 ## Getting started
 0.	Clone/download proyect **branch** on your desired location
 
-1. 	Download latest **Python3.X** version from official page:   
-	*Select Add Python to Windows Path checkbox during installation*  
-		https://www.python.org/downloads/   
-	*Add Python to Windows Path just in case not added by default*  
-		https://datatofish.com/add-python-to-windows-path/  
+1. 	Install all requirements to deploy the application
+
+3. Check server running in *http://localhost:8091*  
 		
 2. 	Check Python installation typing in a new command line:  
 	``python -m pip install --upgrade pip``

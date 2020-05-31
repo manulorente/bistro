@@ -5,7 +5,7 @@ Changelog
 | *Info*  		| Work in progress|
 | *Author*  	| Manuel Lorente <manloralm@outlook.com> |
 | *Copyright*  	| © 2020, Manuel Lorente.       |
-| *Date*  		| 2020-05-30 |
+| *Date*  		| 2020-06-02 |
 | *Version*  	| 0.0.0 |
 
 Version History
