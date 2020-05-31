@@ -1,6 +1,6 @@
-.vs/
-.vs
-vs/*
+.vscode/
+.vscode
+vscode/*
 venv/*
 __pycache__
 __pycache__/

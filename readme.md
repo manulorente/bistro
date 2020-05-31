@@ -1,26 +1,23 @@
 ![](https://github.com/manulorente/bistro/blob/master/resources/logo.jpeg?raw=true)
 
-**Project description**
+**Bistro**
 ================================================
 This web application is build in Angular + Node.js.  
 This front-end will make requests against Golang backend which is powered by NoSQL.
 
 ## Requirements
-* Couchbase Server 4.5+  
-* Golang 1.7+  
-* Node.js 6.0+  
-	
+* Golang 1.14+  
+* Node.js 12.17+
+* Angular 9.1+
+
 ## Taxonomy
 | File      		| Description |
 | ----------- 		| ----------- |
 | *readme*  		| This file |
 | *changelog*  		| Changes tracking file |
-| *resources*  		| Documentation and scripts to build the project |
-| *fonts*  			| All the fonts in the EOT, SVG, TTF, WOFF, etc, formats |
-| *scripts*  		| All the AngularJS code |
-| *server*  		| All the Go code |
-| *styles*  		| All styles code |
-| *views*  			| All the HTML code |
+| *resources*  		| Documentation|
+| *scripts*  		| All scripts to build the project|
+| *app*  			| Source code|
 
 
 ## Getting started
@@ -28,23 +25,28 @@ This front-end will make requests against Golang backend which is powered by NoS
 
 1. 	Install all requirements to deploy the application
 
-3. Check server running in *http://localhost:8091*  
-		
-2. 	Check Python installation typing in a new command line:  
-	``python -m pip install --upgrade pip``
+2. Set Golan workspace for this project running `virtualEnvironment.bat` script. 
 
-3.	Change directory to **branch** folder:  
-	``cd [YOUR_PROJECT_PATH]``
+3. Change directory to *server* folder:  
+``cd [YOUR_PROJECT_PATH]\server``
 
-4.	Install all project dependencies from command line:   
-	``pip install -r requirements.txt``  
+4. Download all of our Golang dependencies. Using the Command Prompt or Terminal, execute the following:  
+`go get github.com/couchbase/gocb`  
+`go get github.com/gorilla/handlers`  
+`go get github.com/gorilla/mux`  
+`go get github.com/satori/go.uuid`  
+The above will get the Couchbase Go SDK, a library for making RESTful API endpoints easier to create, a library for handling cross origin resource sharing (CORS) and a library for generating unique id values that will represent NoSQL document keys.
 	
-5.	Launch script to run server every time you modified a file:  
-	``runLocalServer.bat``
+5.	Launch unitary tests to check everythig is ok:  
+`go test -v`
 		
-6.	Open web browser to view server changes in *http://127.0.0.1:5000/* 
+6.	Open web browser to view server changes in *http://127.0.0.1:8080/* 
 
 7.	From now on you are able to change the code and user any browser as web viewer.
 
-#### Do not forget to commit and push changes and do pull request when your development is finished
+## Serving content over HTTPS
+It is needed to generate self-signed certs locally using openssl:  
+`openssl genrsa -out server.key 2048`  
+`openssl ecparam -genkey -name secp384r1 -out server.key`  
+`openssl req -new -x509 -sha256 -key server.key -out server.crt -days 3650`  
 	
