@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel = "stylesheet" type = "text/css" href = "/frontend/styles/materialize/css/materialize.min.css" />
+  <script type="text/javascript" src="/frontend/styles/materialize/js/materialize.min.js"></script>
+ <title>Bistro</title>
+</head>
+
+<body>
+  <h1>Menu del restaurante</h1>
+    <!-- 
+    This section of the document specifies the table that will
+    be used to display the list of products and their description
+   -->
+  <table>
+    <tr>
+      <th>Producto</th>
+      <th>Tamaño</th>
+      <th>Precio</th>
+    </tr>
+    <td></td>
+    <td></td>
+    <td></td>
+  </table>
+  <br/>
+
+  <!-- 
+    This section contains the form, that will be used to hit the 
+    `POST /menu` API that we will build in the next section
+   -->
+  <form action="/menu" method="post">
+          Producto:
+    <input type="text" name="description">
+    <br/> Tamaño:
+    <input type="text" name="size">
+    <br/> Precio:
+    <input type="text" name="price">
+    <br/>
+    <input type="submit" value="Submit">
+  </form>
+
+  <!-- 
+    Finally, the last section is the script that will
+    run on each page load to fetch the list of products
+    and add them to our existing table
+   -->
+  <script>
+    menuTable = document.querySelector("table")
+
+    /*
+    Use the browsers `fetch` API to make a GET call to /menu
+    We expect the response to be a JSON list of tapas, of the
+    form :
+    [
+      {"description":"...","size":"...","precio":"..."},
+      {"description":"...","size":"...","precio":"..."}
+    ]
+    */
+    fetch("/menu")
+      .then(response => response.json())
+      .then(tapaList => {
+        //Once we fetch the list, we iterate over it
+        tapaList.forEach(tapa => {
+          // Create the table row
+          row = document.createElement("tr")
+
+          // Create the table data elements for the tapas and
+			    // precio columns
+          description = document.createElement("td")
+          description.innerHTML = tapa.description
+          size = document.createElement("td")
+          size.innerHTML = tapa.size
+          price = document.createElement("td")
+          price.innerHTML = tapa.price
+
+          // Add the data elements to the row
+          row.appendChild(description)
+          row.appendChild(size)
+          row.appendChild(price)
+          // Finally, add the row element to the table itself
+          menuTable.appendChild(row)
+        })
+      })
+  </script>
+</body>

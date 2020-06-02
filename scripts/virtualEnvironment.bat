@@ -1,5 +1,5 @@
 cd %cd%/../
-set GOPATH=%cd%\app\
+set GOPATH=%cd%\api\
 set GOBIN=%GOPATH%bin\
 PATH=%PATH%:%GOPATH%:%GOBIN%
 set PATH

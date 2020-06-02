@@ -9,15 +9,17 @@ This front-end will make requests against Golang backend which is powered by NoS
 * Golang 1.14+  
 * Node.js 12.17+
 * Angular 9.1+
+* MongoDB Go Driver 1.1.2+
 
 ## Taxonomy
 | File      		| Description |
 | ----------- 		| ----------- |
 | *readme*  		| This file |
 | *changelog*  		| Changes tracking file |
-| *resources*  		| Documentation|
-| *scripts*  		| All scripts to build the project|
-| *app*  			| Source code|
+| *resources*  		| Documentation |
+| *scripts*  		| All scripts to build the project |
+| *api*  			| Server source code |
+| *frontend*        | Client source code |
 
 
 ## Getting started
@@ -38,11 +40,19 @@ This front-end will make requests against Golang backend which is powered by NoS
 The above will get the Couchbase Go SDK, a library for making RESTful API endpoints easier to create, a library for handling cross origin resource sharing (CORS) and a library for generating unique id values that will represent NoSQL document keys.
 	
 5.	Launch unitary tests to check everythig is ok:  
-`go test -v`
+`go test -v`  
+
+6. Compile and run server rest api from api folder
+`make run`  
 		
 6.	Open web browser to view server changes in *http://127.0.0.1:8080/* 
 
-7.	From now on you are able to change the code and user any browser as web viewer.
+7. To run server, run from frontend folder angular compilation
+`npm run start`  
+
+8.	Open web browser to view client changes in *http://127.0.0.1:4200/* 
+
+9.	From now on you are able to change the code and user any browser as web viewer.
 
 ## Serving content over HTTPS
 It is needed to generate self-signed certs locally using openssl:  
