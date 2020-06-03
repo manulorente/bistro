@@ -1,5 +1,6 @@
 package main
 
+/*
 import (
 	"time"
 
@@ -134,3 +135,4 @@ func PopulateReviews() {
 	}
 	models.DB.SaveReview(defaultReviews...)
 }
+*/

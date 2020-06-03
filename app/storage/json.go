@@ -1,5 +1,6 @@
 package storage
 
+/*
 import (
 	"encoding/json"
 	"fmt"
@@ -171,3 +172,4 @@ func (s *JSON) FindReviews() []models.Review {
 
 	return reviews
 }
+*/

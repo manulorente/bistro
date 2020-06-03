@@ -1,5 +1,6 @@
 package storage
 
+/*
 import "github.com/katzien/go-structure-examples/layered/models"
 
 // Memory data storage layered save only in memory
@@ -88,3 +89,4 @@ func (s *Memory) FindBeers() []models.Beer {
 func (s *Memory) FindReviews() []models.Review {
 	return s.reviews
 }
+*/

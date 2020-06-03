@@ -7,13 +7,13 @@ This front-end will make requests against Golang backend which is powered by NoS
 
 ## Requirements
 * Golang 1.14+  
-* MongoDB 1.3+
 
 ## Project structure
 | File      		| Description |
 | ----------- 		| ----------- |
 | *README*  		| This file |
 | *CHANGELOG*  		| Changes tracking file |
+| *LICENSE*  		| Copyright |
 | *resources*  		| Documentation |
 | *scripts*  		| Useful batch scripts|
 | *app*  			| Source code |
