@@ -2,57 +2,39 @@
 
 **Bistro**
 ================================================
-This web application is build in Angular + Node.js.  
+This web application is build following MVC layered architecture. 
 This front-end will make requests against Golang backend which is powered by NoSQL.
 
 ## Requirements
 * Golang 1.14+  
-* Node.js 12.17+
-* Angular 9.1+
-* MongoDB Go Driver 1.1.2+
+* MongoDB 1.3+
 
-## Taxonomy
+## Project structure
 | File      		| Description |
 | ----------- 		| ----------- |
-| *readme*  		| This file |
-| *changelog*  		| Changes tracking file |
+| *README*  		| This file |
+| *CHANGELOG*  		| Changes tracking file |
 | *resources*  		| Documentation |
-| *scripts*  		| All scripts to build the project |
-| *api*  			| Server source code |
-| *frontend*        | Client source code |
-
+| *scripts*  		| Useful batch scripts|
+| *app*  			| Source code |
 
 ## Getting started
-0.	Clone/download proyect **branch** on your desired location
+0. Clone/download proyect **branch** on your desired location
 
-1. 	Install all requirements to deploy the application
+1. Set Go environment for this project running `goSetup.bat` script. 
 
-2. Set Golan workspace for this project running `virtualEnvironment.bat` script. 
+2. Change directory to *app* folder:  
+``cd [YOUR_PROJECT_PATH]\app``
 
-3. Change directory to *server* folder:  
-``cd [YOUR_PROJECT_PATH]\server``
+3. Compile server program using the Makefile
+`make build`  
 
-4. Download all of our Golang dependencies. Using the Command Prompt or Terminal, execute the following:  
-`go get github.com/couchbase/gocb`  
-`go get github.com/gorilla/handlers`  
-`go get github.com/gorilla/mux`  
-`go get github.com/satori/go.uuid`  
-The above will get the Couchbase Go SDK, a library for making RESTful API endpoints easier to create, a library for handling cross origin resource sharing (CORS) and a library for generating unique id values that will represent NoSQL document keys.
-	
-5.	Launch unitary tests to check everythig is ok:  
-`go test -v`  
+4. Run server located in app folder
+`bistro.exe`  
 
-6. Compile and run server rest api from api folder
-`make run`  
-		
-6.	Open web browser to view server changes in *http://127.0.0.1:8080/* 
+5.	Open web browser to view server changes in *http://127.0.0.1:8080/* 
 
-7. To run server, run from frontend folder angular compilation
-`npm run start`  
-
-8.	Open web browser to view client changes in *http://127.0.0.1:4200/* 
-
-9.	From now on you are able to change the code and user any browser as web viewer.
+6.	From now on you are able to change the code and user any browser as web viewer.
 
 ## Serving content over HTTPS
 It is needed to generate self-signed certs locally using openssl:  
