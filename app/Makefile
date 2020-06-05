@@ -1,6 +1,6 @@
 
 build:
-	go build -o -v
+	go build -o bistro.exe
 
 run:
 	go run main.go

@@ -1,0 +1,5 @@
+Name: Bistro
+Domain: dev-ju4b9g5i.eu.auth0.com
+Client ID: GR6mGA4jOvDZINkW6yIarBuGlSGU1rVB
+Client Secret: -sKeeNqtvTcKGuxNXErFtYvsFn9-q9C_HmIiLrk8awHgnE2aiE1L9qq0jKL-F0xO
+Audience: "https://bistro/api"
