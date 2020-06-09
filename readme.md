@@ -45,10 +45,8 @@ Project overview
 4. Run server located in app folder
 `bistro.exe`  
 
-5. Open web browser to view server changes in *http://127.0.0.1:8080/* 
+5. Open web browser to view server changes in *http://127.0.0.1:3000/* 
 
-6. Run ReactJS app witthin *frontend* folder  
-`npm start`
 
 ### Serving content over HTTPS
 It is needed to generate self-signed certs locally using openssl:  

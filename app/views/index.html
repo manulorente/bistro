@@ -1,0 +1,11 @@
+<!--index.html-->
+
+<!--Embed the header.html template at this location-->
+{{ template "header.html" .}}
+
+  <!-- Add some data-->
+  <h1>{{ .title}}</h1>
+  <h2>{{ .msg}}</h2>
+
+<!--Embed the footer.html template at this location-->
+{{ template "footer.html" .}}
