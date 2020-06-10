@@ -5,6 +5,11 @@
   <h1>{{ .title}}</h1>
   <h2>{{ .msg}}</h2>
 <div>
+  {{ if .MsgTitle}}
+  <p class="bg-success">
+    {{.MsgTitle}}: {{.MsgContent}}
+  </p>
+  {{end}}
   <div class="display:inline-block;">
     <table style="width:100%">
       <tr>

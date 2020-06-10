@@ -3,40 +3,36 @@ package handlers
 import (
 	// Third party
 	"github.com/gin-gonic/gin"
+	"regexp"
 
 )
 
+var Regex_var = regexp.MustCompile("^/(register|login|view|create)/([a-zA-Z0-9]+)$")
+
 func InitializeRoutes(r *gin.Engine) {
+
+	r.Use(SetUserStatus())
 
 	// Setup end points
 	r.GET("/", HomePage)
-	//r.GET("/products", ProductsPage)
-	//r.POST("/products", CreateProduct)
 	r.POST("/query", QueryStrings)
 
 	ur := r.Group("/user")
     {
-        ur.GET("/register", ShowRegistrationPage)
-		ur.POST("/register", Register)
-        ur.GET("/login", ShowLoginPage)
-        ur.POST("/login", PerformLogin)
-		ur.GET("/logout", Logout)	
-
+        ur.GET("/register", EnsureNotLoggedIn(), ShowRegistrationPage)
+		ur.POST("/register", EnsureNotLoggedIn(), Register)
+        ur.GET("/login", EnsureNotLoggedIn(), ShowLoginPage)
+        ur.POST("/login", EnsureNotLoggedIn(), PerformLogin)
+		ur.GET("/logout", EnsureLoggedIn(), Logout)	
 	}
 	
 	pr := r.Group("/products")
 	{
-		pr.GET("/view", ProductsPage)	
-		pr.POST("/view", ProductsPage)	
-		pr.POST("/create", CreateProduct)	
+		pr.GET("/view", EnsureLoggedIn(), ProductsPage)	
+		pr.POST("/view", EnsureLoggedIn(), ProductsPage)	
+		pr.POST("/create", EnsureLoggedIn(), CreateProduct)
+		//pr.POST("/edit", EditProduct)	
 	}
-
-
-
-	// Set new routes - One protected by Auth0 and other no
-	//r.GET("/", handlers.HomePage)
-	//r.GET("/products", handlers.AuthMiddleware(), handlers.ReadAllProducts)
-	//r.POST("/products", handlers.AuthMiddleware(), handlers.CreateProduct)
 
 }
 

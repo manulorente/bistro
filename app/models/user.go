@@ -25,6 +25,15 @@ var UsersList = []User{
     {Username: "user3", Password: "pass3", CreatedAt: time.Now(), UpdatedAt: time.Now()},
 }
 
+func IsUserValid(username, password string) bool {
+    for _, u := range UsersList {
+        if u.Username == username && u.Password == password {
+            return true
+        }
+    }
+    return false
+}
+
 // Register a new user with the given username and password
 func RegisterNewUser(username, password string) (*User, error) {
 	if strings.TrimSpace(password) == "" {
@@ -48,13 +57,4 @@ func IsUsernameAvailable(username string) bool {
         }
     }
     return true
-}
-
-func IsUserValid(username, password string) bool {
-    for _, u := range UsersList {
-        if u.Username == username && u.Password == password {
-            return true
-        }
-    }
-    return false
 }

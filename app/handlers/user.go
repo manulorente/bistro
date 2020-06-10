@@ -25,15 +25,21 @@ func Register(c *gin.Context) {
 	  // Obtain the POSTed username and password values
 	  username := c.PostForm("username")
 	  password := c.PostForm("password")
-  
+
+	  //var sameSiteCookie http.SameSite;
+
 	  if _, err := models.RegisterNewUser(username, password); err == nil {
 		  // If the user is created, set the token in a cookie and log the user in
 		  token := GenerateSessionToken()
-		  c.SetCookie("token", token, 3600, "", "", false, true)
+		  //c.SetCookie("token", token, 3600, "", "", sameSiteCookie, false, true)
+		  c.SetCookie("token", token, 3600, "", "", false, true) 
 		  c.Set("is_logged_in", true)
   
-		  Render(c, gin.H{
-			  "title": "Successful registration & Login"}, "login-successful.html")
+		 // Render(c, gin.H{
+			  //"title": "Successful registration & Login"}, "login.html")
+			c.HTML(200, "menu.html", gin.H{
+			"MsgTitle":   "Registration Successful",
+			"MsgContent": "Welcome " + username})
   
 	  } else {
 		  // If the username/password combination is invalid,
@@ -55,10 +61,15 @@ func PerformLogin(c *gin.Context) {
 	username := c.PostForm("username")
     password := c.PostForm("password")
 
+	//var sameSiteCookie http.SameSite;
+
+	// Check if the username/password combination is valid
     if models.IsUserValid(username, password) {
         token := GenerateSessionToken()
-        c.SetCookie("token", token, 3600, "", "", false, true)
+		//c.SetCookie("token", token, 3600, "", "", sameSiteCookie, false, true)
+		c.SetCookie("token", token, 3600, "", "", false, true)
 
+		c.Set("is_logged_in", true)
 		c.Redirect(http.StatusTemporaryRedirect, "/products/view")
 
     } else {
@@ -69,6 +80,12 @@ func PerformLogin(c *gin.Context) {
 }
 
 func Logout(c *gin.Context) {
+	//var sameSiteCookie http.SameSite;
+
+	// Clear the cookie
+	//c.SetCookie("token", "", -1, "", "", sameSiteCookie, false, true)
 	c.SetCookie("token", "", -1, "", "", false, true)
+
+	// Redirect to the home page
     c.Redirect(http.StatusTemporaryRedirect, "/")
 }
