@@ -3,6 +3,7 @@ module github.com/manulorente/bistro
 go 1.14
 
 require (
+	github.com/astaxie/beego v1.12.1 // indirect
 	github.com/auth0/go-jwt-middleware v0.0.0-20200507191422-d30d7b9ece63
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/gin-contrib/cors v1.3.1 // indirect
@@ -12,8 +13,10 @@ require (
 	github.com/golang/protobuf v1.4.2 // indirect
 	github.com/gorilla/mux v1.7.4 // indirect
 	github.com/jcelliott/lumber v0.0.0-20160324203708-dd349441af25 // indirect
+	github.com/jinzhu/gorm v1.9.13 // indirect
 	github.com/joho/godotenv v1.3.0
 	github.com/katzien/go-structure-examples v0.0.0-20200517211633-f3e3f59c4c5e // indirect
+	github.com/lib/pq v1.7.0 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.1 // indirect
 	github.com/nanobox-io/golang-scribble v0.0.0-20190309225732-aa3e7c118975 // indirect

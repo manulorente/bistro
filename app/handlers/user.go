@@ -24,11 +24,12 @@ func ShowRegistrationPage(c *gin.Context) {
 func Register(c *gin.Context) {
 	  // Obtain the POSTed username and password values
 	  username := c.PostForm("username")
+	  email := c.PostForm("email")
 	  password := c.PostForm("password")
 
 	  //var sameSiteCookie http.SameSite;
 
-	  if _, err := models.RegisterNewUser(username, password); err == nil {
+	  if _, err := models.RegisterNewUser(username, email, password); err == nil {
 		  // If the user is created, set the token in a cookie and log the user in
 		  token := GenerateSessionToken()
 		  //c.SetCookie("token", token, 3600, "", "", sameSiteCookie, false, true)

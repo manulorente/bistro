@@ -6,10 +6,8 @@ This web application is build following MVC layered architecture.
 This front-end will make requests against Golang backend which is powered by NoSQL.
 
 ### Tech stack
-* Go 1.14+  		- Backend language
-* React v16+ 		- Frontend technology
-* Auth0 			- User authentication
-* Postgres SQL 		- Database
+* Go 1.14+  		- Backend technology
+* Postgres SQL 12	- Database
 
 ### Info
 | Item     		| Description |
@@ -17,7 +15,7 @@ This front-end will make requests against Golang backend which is powered by NoS
 | *Author*  	| Manuel Lorente <manloralm@outlook.com> |
 | *Copyright*  	| © 2020, Manuel Lorente.       |
 | *Date*  		| 2020-June |
-| *Version*  	| 0.0.0 |
+| *Version*  	| 0.0.1 |
 
 
 Project overview
@@ -56,5 +54,5 @@ It is needed to generate self-signed certs locally using openssl:
 
 Changelog
 ==============
-0.0.0  
+0.0.1  
 		*Initial version*

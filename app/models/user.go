@@ -7,10 +7,12 @@ import (
 )
 
 type User struct {
-    Username 	string 		`json:"username"`
-	Password 	string 		`json:"-"`
-	CreatedAt   time.Time 	`json:"created_at"`
-	UpdatedAt   time.Time 	`json:"updated_at"`
+    Userid 	    int 		`json:"userid" orm:"primary_key"`
+    Email       string      `json:"email" orm:"size(128)"`
+    Username 	string 		`json:"username" orm:"size(32)`
+	Password 	string 		`json:"password" orm:"size(64)"`
+	CreatedAt   time.Time 	`json:"created_at" orm:"auto"`
+    UpdatedAt   time.Time 	`json:"updated_at" orm:"auto"`
 }
 
 // For this demo, we're storing the user list in memory
@@ -20,9 +22,9 @@ type User struct {
 // store passwords securely by salting and hashing them instead
 // of using them as we're doing in this demo
 var UsersList = []User{
-    {Username: "user1", Password: "pass1", CreatedAt: time.Now(), UpdatedAt: time.Now()},
-    {Username: "user2", Password: "pass2", CreatedAt: time.Now(), UpdatedAt: time.Now()},
-    {Username: "user3", Password: "pass3", CreatedAt: time.Now(), UpdatedAt: time.Now()},
+    {Userid: 0, Email: "user1@gmail.com", Username: "user1", Password: "pass1", CreatedAt: time.Now(), UpdatedAt: time.Time{}},
+    {Userid: 1, Email: "user2@gmail.com", Username: "user2", Password: "pass2", CreatedAt: time.Now(), UpdatedAt: time.Time{}},
+    {Userid: 2, Email: "user3@gmail.com", Username: "user3", Password: "pass3", CreatedAt: time.Now(), UpdatedAt: time.Time{}},
 }
 
 func IsUserValid(username, password string) bool {
@@ -35,24 +37,48 @@ func IsUserValid(username, password string) bool {
 }
 
 // Register a new user with the given username and password
-func RegisterNewUser(username, password string) (*User, error) {
+func RegisterNewUser(username, email, password string) (*User, error) {
 	if strings.TrimSpace(password) == "" {
         return nil, errors.New("The password can't be empty")
     } else if !IsUsernameAvailable(username) {
         return nil, errors.New("The username isn't available")
+    } else if !IsEmailAvailable(email) {
+        return nil, errors.New("The email isn't available")
     }
 
-    u := User{Username: username, Password: password, CreatedAt: time.Now(), UpdatedAt: time.Now()}
+    u := User{
+        Userid: length(UsersList)+1,
+        Email: email, 
+        Username: username, 
+        Password: password, 
+        CreatedAt: time.Now(), 
+        UpdatedAt: time.Time{},
+    }
 
-    UsersList = append(UsersList, u)
+    //UsersList = append(UsersList, u)
+    _, err := ORM.Insert(&u)
 
-    return &u, nil
+    if err == nil {
+        return &u, nil
+    }else{
+        return nil, errors.New("The user could not be inserted")
+    }
 }
 
 // Check if the supplied username is available
 func IsUsernameAvailable(username string) bool {
     for _, u := range UsersList {
         if u.Username == username {
+            return false
+        }
+    }
+    return true
+}
+
+// Check if the supplied email is available
+func IsEmailAvailable(email string) bool {
+    for _, u := range UsersList {
+        if u.Email == email {
             return false
         }
     }
