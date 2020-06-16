@@ -2,32 +2,24 @@ package models
 
 import (
 	"time"
-	"errors"
-	"strings"
+    "github.com/jinzhu/gorm"
 )
 
 type User struct {
-    Userid 	    int 		`json:"userid" orm:"primary_key"`
-    Email       string      `json:"email" orm:"size(128)"`
-    Username 	string 		`json:"username" orm:"size(32)`
-	Password 	string 		`json:"password" orm:"size(64)"`
-	CreatedAt   time.Time 	`json:"created_at" orm:"auto"`
-    UpdatedAt   time.Time 	`json:"updated_at" orm:"auto"`
+    gorm.Model
+    UserID 	    int 	    `json:"userid" gorm:"primary_key"`
+    Email       string      `json:"email" validate:"min=4,max=32"`
+    Username 	string 		`json:"username" validate:"min=4,max=32,regexp=^[a-zA-Z]*$"`
+	Password 	string 		`json:"password" validate:"min=4,max=32"`
+	CreatedAt   time.Time   `json:"created_at"`
+	UpdatedAt   time.Time   `json:"updated_at"`
+	DeletedAt   *time.Time  `json:"deleted_at"`
+    Products    []Product   `json:"products,omitempty"`
 }
 
-// For this demo, we're storing the user list in memory
-// We also have some users predefined.
-// In a real application, this list will most likely be fetched
-// from a database. Moreover, in production settings, you should
-// store passwords securely by salting and hashing them instead
-// of using them as we're doing in this demo
-var UsersList = []User{
-    {Userid: 0, Email: "user1@gmail.com", Username: "user1", Password: "pass1", CreatedAt: time.Now(), UpdatedAt: time.Time{}},
-    {Userid: 1, Email: "user2@gmail.com", Username: "user2", Password: "pass2", CreatedAt: time.Now(), UpdatedAt: time.Time{}},
-    {Userid: 2, Email: "user3@gmail.com", Username: "user3", Password: "pass3", CreatedAt: time.Now(), UpdatedAt: time.Time{}},
-}
-
+/*
 func IsUserValid(username, password string) bool {
+    UsersList := GetAllUsers()
     for _, u := range UsersList {
         if u.Username == username && u.Password == password {
             return true
@@ -83,4 +75,4 @@ func IsEmailAvailable(email string) bool {
         }
     }
     return true
-}
+}*/

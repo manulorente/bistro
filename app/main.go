@@ -7,8 +7,8 @@ import (
     "os"
 
 	// Local
-	"github.com/manulorente/bistro/handlers"
-	"github.com/manulorente/bistro/models"
+	models "github.com/manulorente/bistro/models"
+	controllers "github.com/manulorente/bistro/controllers"
 
 	// Third party
 	"github.com/gin-gonic/gin"
@@ -44,9 +44,7 @@ func main() {
 	gin.SetMode(gin.DebugMode)
 
 	// Connects to database and ther the ORM object and stores it in the global variable ORM
-	models.ConnectToDb()
-    ORM = models.GetOrmObject()
-    ORM.Debug = true
+	db = ConnectToDb()
 
 	// Set the router as the default one shipped with Gin
 	r := gin.Default()
@@ -59,7 +57,7 @@ func main() {
 	r.LoadHTMLGlob("views/*")
 
 	// Init routering
-	handlers.InitializeRoutes(r)
+	InitializeRoutes(r)
 	
 	// Config and run the server
 	r.Run(":"+os.GetEnv("APP_PORT"))
