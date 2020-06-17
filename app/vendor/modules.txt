@@ -3,6 +3,9 @@
 github.com/astaxie/beego/orm
 # github.com/auth0/go-jwt-middleware v0.0.0-20200507191422-d30d7b9ece63
 ## explicit
+# github.com/badoux/checkmail v0.0.0-20181210160741-9661bd69e9ad
+## explicit
+github.com/badoux/checkmail
 # github.com/dgrijalva/jwt-go v3.2.0+incompatible
 ## explicit
 # github.com/gin-contrib/cors v1.3.1
@@ -74,6 +77,10 @@ github.com/ugorji/go/codec
 ## explicit
 # go.mongodb.org/mongo-driver v1.3.3
 ## explicit
+# golang.org/x/crypto v0.0.0-20200604202706-70a84ac30bf9
+## explicit
+golang.org/x/crypto/bcrypt
+golang.org/x/crypto/blowfish
 # golang.org/x/sys v0.0.0-20200602225109-6fdc65e7d980
 ## explicit
 golang.org/x/sys/internal/unsafeheader

@@ -5,6 +5,7 @@ go 1.14
 require (
 	github.com/astaxie/beego v1.12.1
 	github.com/auth0/go-jwt-middleware v0.0.0-20200507191422-d30d7b9ece63 // indirect
+	github.com/badoux/checkmail v0.0.0-20181210160741-9661bd69e9ad
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible // indirect
 	github.com/gin-contrib/cors v1.3.1 // indirect
 	github.com/gin-gonic/contrib v0.0.0-20191209060500-d6e26eeaa607 // indirect
@@ -24,6 +25,7 @@ require (
 	github.com/sqs/goreturns v0.0.0-20181028201513-538ac6014518 // indirect
 	github.com/urfave/negroni v1.0.0 // indirect
 	go.mongodb.org/mongo-driver v1.3.3 // indirect
+	golang.org/x/crypto v0.0.0-20200604202706-70a84ac30bf9
 	golang.org/x/sys v0.0.0-20200602225109-6fdc65e7d980 // indirect
 	google.golang.org/protobuf v1.24.0 // indirect
 	gopkg.in/validator.v2 v2.0.0-20200605151824-2b28d334fa05 // indirect

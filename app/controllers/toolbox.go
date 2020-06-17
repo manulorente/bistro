@@ -2,6 +2,8 @@ package controllers
 
 import (
 	"regexp"
+	"errors"
+	"strings"
 	"runtime"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -38,4 +40,20 @@ func Render(c *gin.Context, data gin.H, templateName string) {
 	  c.HTML(http.StatusOK, templateName, data)
 	}
   
-  }
+}
+
+func FormatError(err string) error {
+
+	if strings.Contains(err, "username") {
+		return errors.New("User name Already Taken")
+	}
+
+	if strings.Contains(err, "email") {
+		return errors.New("Email Already Taken")
+	}
+
+	if strings.Contains(err, "hashedPassword") {
+		return errors.New("Incorrect Password")
+	}
+	return errors.New("Incorrect Details")
+}

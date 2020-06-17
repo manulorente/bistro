@@ -3,7 +3,7 @@
 **Bistro**
 ================================================
 This web application is build following MVC layered architecture. 
-This front-end will make requests against Golang backend which is powered by NoSQL.
+This front-end will make requests against Golang backend which is powered by PostgresSQL.
 
 ### Tech stack
 * Go 1.14+  		- Backend technology

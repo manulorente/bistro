@@ -4,8 +4,10 @@ import (
 	"math/rand"
     "net/http"
     "strconv"
-	"strings"
-
+    //"time"
+	// Local
+    "github.com/manulorente/bistro/models"
+    
     "github.com/gin-gonic/gin"
 )
 
@@ -21,58 +23,72 @@ func ShowRegistrationPage(c *gin.Context) {
         "title": "Register"}, "register.html")
 }
 
-func Register(c *gin.Context) {
-	  // Obtain the POSTed username and password values
-	  username := c.PostForm("username")
-	  email := c.PostForm("email")
-	  password := c.PostForm("password")
-
-	  //var sameSiteCookie http.SameSite;
-
-	  if _, err := RegisterNewUser(username, email, password); err == nil {
-		  // If the user is created, set the token in a cookie and log the user in
-		  token := GenerateSessionToken()
-		  //c.SetCookie("token", token, 3600, "", "", sameSiteCookie, false, true)
-		  c.SetCookie("token", token, 3600, "", "", false, true) 
-		  c.Set("is_logged_in", true)
-  
-		 // Render(c, gin.H{
-			  //"title": "Successful registration & Login"}, "login.html")
-			c.HTML(200, "menu.html", gin.H{
-			"MsgTitle":   "Registration Successful",
-			"MsgContent": "Welcome " + username})
-  
-	  } else {
-		  // If the username/password combination is invalid,
-		  // show the error message on the login page
-		  c.HTML(http.StatusBadRequest, "register.html", gin.H{
-			  "ErrorTitle":   "Registration Failed",
-			  "ErrorMessage": err.Error()})
-  
-	  }
-}
-
 func ShowLoginPage(c *gin.Context) {
 	Render(c, gin.H{
         "title": "Login",
     }, "login.html")
 }
 
-func PerformLogin(c *gin.Context) {
-	username := c.PostForm("username")
-    password := c.PostForm("password")
+func (server *Server) Register(c *gin.Context) {
+    var err error
+    // Create new user and validate it
+    user := models.User{}
+    // Obtain the posted username and password values
+    user.Username = c.PostForm("username")
+    user.Email = c.PostForm("email")
+    user.Password = c.PostForm("password")
+	user.Prepare("register")
+    err = user.Validate("register")
 
-	//var sameSiteCookie http.SameSite;
+    if err == nil {
+        userCreated, err := user.SaveUser(server.DB)
 
-	// Check if the username/password combination is valid
-    if IsUserValid(username, password) {
-        token := GenerateSessionToken()
-		//c.SetCookie("token", token, 3600, "", "", sameSiteCookie, false, true)
-		c.SetCookie("token", token, 3600, "", "", false, true)
+        if err == nil {
+            // If the user is created, set the token in a cookie and log the user in
+            token := GenerateSessionToken()
+            c.SetCookie("token", token, 3600, "", "", false, true) 
+            c.Set("is_logged_in", true)
 
-		c.Set("is_logged_in", true)
-		c.Redirect(http.StatusTemporaryRedirect, "/products/view")
+            c.HTML(200, "menu.html", gin.H{
+            "MsgTitle":   "Registration Successful",
+            "MsgContent": "Welcome " + userCreated.Username})
+        } else {
+            // If the username/password combination is invalid, show the error message on the login page
+            c.HTML(http.StatusBadRequest, "register.html", gin.H{
+                "ErrorTitle":   "Registration Failed",
+                "ErrorMessage": err.Error()})
+        }
+    }else{
+        // If the username/password combination is invalid, show the error message on the login page
+        c.HTML(http.StatusBadRequest, "register.html", gin.H{
+            "ErrorTitle":   "Registration Failed",
+            "ErrorMessage": err.Error()})        
+    }
+}
 
+func (server *Server) Login(c *gin.Context) {
+    var err error
+    user := models.User{}
+    user.Username = c.PostForm("username")
+    user.Password = c.PostForm("password")
+	user.Prepare("login")
+    err = user.Validate("login")
+
+    if err == nil {
+        userOK, err := user.CheckUser(server.DB)
+    
+        if err == nil {
+            token := GenerateSessionToken()
+            //c.SetCookie("token", token, 3600, "", "", sameSiteCookie, false, true)
+            c.SetCookie("token", token, 3600, "", "", false, true)
+
+            c.Set("is_logged_in", true)
+            c.Redirect(http.StatusTemporaryRedirect, "/:userOK.id/view")
+        } else {
+            c.HTML(http.StatusBadRequest, "login.html", gin.H{
+                "ErrorTitle":   "Login Failed",
+                "ErrorMessage": "User not found"})
+        }
     } else {
         c.HTML(http.StatusBadRequest, "login.html", gin.H{
             "ErrorTitle":   "Login Failed",
@@ -81,72 +97,11 @@ func PerformLogin(c *gin.Context) {
 }
 
 func Logout(c *gin.Context) {
-	//var sameSiteCookie http.SameSite;
 
 	// Clear the cookie
-	//c.SetCookie("token", "", -1, "", "", sameSiteCookie, false, true)
 	c.SetCookie("token", "", -1, "", "", false, true)
 
 	// Redirect to the home page
     c.Redirect(http.StatusTemporaryRedirect, "/")
 }
 
-
-func IsUserValid(username, password string) bool {
-    UsersList := GetAllUsers()
-    for _, u := range UsersList {
-        if u.Username == username && u.Password == password {
-            return true
-        }
-    }
-    return false
-}
-
-// Register a new user with the given username and password
-func RegisterNewUser(username, email, password string) (*User, error) {
-	if strings.TrimSpace(password) == "" {
-        return nil, errors.New("The password can't be empty")
-    } else if !IsUsernameAvailable(username) {
-        return nil, errors.New("The username isn't available")
-    } else if !IsEmailAvailable(email) {
-        return nil, errors.New("The email isn't available")
-    }
-
-    u := User{
-        Userid: length(UsersList)+1,
-        Email: email, 
-        Username: username, 
-        Password: password, 
-        CreatedAt: time.Now(), 
-        UpdatedAt: time.Time{},
-    }
-
-    UsersList = append(UsersList, u)
-    //_, err := ORM.Insert(&u)
-
-    if err == nil {
-        return &u, nil
-    }else{
-        return nil, errors.New("The user could not be inserted")
-    }
-}
-
-// Check if the supplied username is available
-func IsUsernameAvailable(username string) bool {
-    for _, u := range UsersList {
-        if u.Username == username {
-            return false
-        }
-    }
-    return true
-}
-
-// Check if the supplied email is available
-func IsEmailAvailable(email string) bool {
-    for _, u := range UsersList {
-        if u.Email == email {
-            return false
-        }
-    }
-    return true
-}

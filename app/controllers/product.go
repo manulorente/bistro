@@ -3,14 +3,17 @@ package controllers
 import (
 	// System
 	//"log"
-	"net/http"
+	//"net/http"
 
 	// Local
+	//models "github.com/manulorente/bistro/models"
 
 	// Third party
-	"github.com/gin-gonic/gin"
-)
+	//"github.com/gin-gonic/gin"
+	//"github.com/jinzhu/gorm"
 
+)
+/*
 func ProductsPage(c *gin.Context) {
 	products := GetAllProducts()
 	Render(c, gin.H{
@@ -26,7 +29,7 @@ func ReadAllProducts(c *gin.Context) {
 	c.Header("Content-Type", "application/json")
 	c.JSON(http.StatusOK, GetAllProducts())
 }
-
+*/
 /*
 func CreateProduct(c *gin.Context) {
 	var err error
@@ -43,7 +46,7 @@ func CreateProduct(c *gin.Context) {
 	c.JSON(http.StatusCreated, product)
 
 }*/
-
+/*
 func CreateProduct(c *gin.Context) {
     cat := c.PostForm("cat")
     name := c.PostForm("name")
@@ -58,14 +61,13 @@ func CreateProduct(c *gin.Context) {
     }
 }
 
-/*
 func GetAllProducts() (c *gin.Context) {
 	db := c.MustGet("db").(*gorm.DB)
-	var products []models.Product
+	var products []Product
 	db.Find(&products)
 	c.JSON(http.StatusOK, gin.H{"data": products})
-}*/
-/*
+}
+
 func CreateNewProduct(cat, name, description, size, price string) (*Product, error) {
     p := models.Product{
 		ID: len(ProductsList) + 1, 
@@ -80,4 +82,5 @@ func CreateNewProduct(cat, name, description, size, price string) (*Product, err
     ProductsList = append(ProductsList, p)
 
     return &p, nil
-}*/
+}
+*/

@@ -1,0 +1,8 @@
+cd %cd%/..
+setx SERVER_PORT "3000" /M
+setx POSTGRES_HOST "127.0.0.1" /M
+setx POSTGRES_PORT "5432" /M
+setx POSTGRES_USER "postgres" /M
+setx POSTGRES_PASSWORD "645610515" /M
+setx POSTGRES_DB "test" /M
+PAUSE
